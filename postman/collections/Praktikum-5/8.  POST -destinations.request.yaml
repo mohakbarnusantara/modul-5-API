@@ -1,0 +1,13 @@
+$kind: http-request
+name: "8.  POST /destinations "
+description: ""
+url: http://localhost:3000/login?=
+method: POST
+headers:
+  x-api-key: "{{api_key}}"
+queryParams:
+  "": ""
+body:
+  type: json
+  content: '{ "name": "Air Terjun Wera", "category": "alam", "regionId": 5 }'
+order: 11000

@@ -1,0 +1,26 @@
+$kind: http-request
+name: "14. POST /graphql "
+description: ""
+url: http://localhost:3000/graphql
+method: POST
+headers:
+  x-api-key: "{{api_key}}"
+body:
+  type: graphql
+  content:
+    query: "mutation {\r
+
+      \  createDestination(name: \"Pulau Kadidiri\", category: \"bahari\", regionId: 4) {\r
+
+      \    id\r
+
+      \    name\r
+
+      \  }\r
+
+      }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{token_editor}}"
+order: 17000

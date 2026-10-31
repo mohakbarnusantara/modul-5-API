@@ -1,0 +1,13 @@
+$kind: http-request
+name: 5. POST /login
+description: ""
+url: http://localhost:3000/login?=
+method: POST
+headers:
+  x-api-key: "{{api_key}}"
+queryParams:
+  "": ""
+body:
+  type: json
+  content: '{ "username": "editor", "password": "palu2026" }'
+order: 8000

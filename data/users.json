@@ -19,5 +19,12 @@
     "role": "editor",
     "salt": "97b3225e4f45b42221dc5e4a918953f0",
     "passwordHash": "ae8079839bcedd17fa278494fd3da97939c704121665e2928e638d94d6b5735c"
+  },
+  {
+    "id": 4,
+    "username": "F5512520037",
+    "role": "editor",
+    "salt": "1c06487c7c494bb5069f0dfcf31ec486",
+    "passwordHash": "e0ae594f2b71298b7ff14995d0092fe04efa6bdf6bac045afc5cdc515d9ceb50"
   }
 ]

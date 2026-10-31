@@ -1,0 +1,15 @@
+$kind: http-request
+name: 9. DELETE /destinations/6
+description: ""
+url: http://localhost:3000/destinations
+method: POST
+headers:
+  x-api-key: "{{api_key}}"
+body:
+  type: json
+  content: '{ "name": "Air Terjun Wera", "category": "alam", "regionId": 5 }'
+auth:
+  type: bearer
+  credentials:
+    token: "{{token_editor}}"
+order: 12000

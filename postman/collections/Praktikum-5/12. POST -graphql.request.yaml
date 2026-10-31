@@ -1,0 +1,12 @@
+$kind: http-request
+name: "12. POST /graphql "
+description: ""
+url: http://localhost:3000/graphql
+method: POST
+headers:
+  x-api-key: "{{api_key}}"
+body:
+  type: graphql
+  content:
+    query: query { destinations { name } }
+order: 15000

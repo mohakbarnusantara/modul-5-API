@@ -1,0 +1,26 @@
+$kind: http-request
+name: 15. DELETE /destinations/6
+description: ""
+url: http://localhost:3000/destinations/6
+method: DELETE
+headers:
+  x-api-key: "{{api_key}}"
+body:
+  type: graphql
+  content:
+    query: "mutation {\r
+
+      \  createDestination(name: \"Pulau Kadidiri\", category: \"bahari\", regionId: 4) {\r
+
+      \    id\r
+
+      \    name\r
+
+      \  }\r
+
+      }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{token_admin}}"
+order: 18000

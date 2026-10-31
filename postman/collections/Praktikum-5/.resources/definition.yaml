@@ -6,3 +6,9 @@ variables:
   - key: token_editor
     secret: true
     disabled: false
+  - key: token_admin
+    secret: true
+    disabled: false
+  - key: json_web_token_0wgj
+    secret: true
+    disabled: false

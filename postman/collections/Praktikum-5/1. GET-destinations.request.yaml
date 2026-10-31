@@ -1,0 +1,8 @@
+$kind: http-request
+name: 1. GET/destinations
+description: ""
+url: http://localhost:3000/destinations
+method: GET
+headers:
+  x-api-key: "{{api_key}}"
+order: 4000

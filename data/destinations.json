@@ -28,41 +28,5 @@
     "name": "Pantai Talise",
     "category": "pantai",
     "regionId": 1
-  },
-  {
-    "id": 7,
-    "name": "Air Terjun Wera",
-    "category": "alam",
-    "regionId": 5
-  },
-  {
-    "id": 8,
-    "name": "Air Terjun Wera",
-    "category": "alam",
-    "regionId": 5
-  },
-  {
-    "id": 9,
-    "name": "Air Terjun Wera",
-    "category": "alam",
-    "regionId": 5
-  },
-  {
-    "id": 10,
-    "name": "Air Terjun Wera",
-    "category": "alam",
-    "regionId": 5
-  },
-  {
-    "id": 11,
-    "name": "Air Terjun Wera",
-    "category": "alam",
-    "regionId": 5
-  },
-  {
-    "id": 12,
-    "name": "Air Terjun Wera",
-    "category": "alam",
-    "regionId": 5
   }
 ]

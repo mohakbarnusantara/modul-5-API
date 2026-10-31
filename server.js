@@ -18,7 +18,7 @@ const REGION_FILE = path.join(__dirname, 'data', 'regions.json');
 const KEY_FILE = path.join(__dirname, 'data', 'api-keys.json');
 const USER_FILE = path.join(__dirname, 'data', 'users.json');
 const TOKEN_SECRET = 'kode-rahasia-praktikum-5';
-const MASA_TOKEN = 60;
+const MASA_TOKEN = 3600;
 
 //---------- logika destinasi ----------
 function bacaToken(token) {
@@ -433,7 +433,8 @@ resolver.destination = async (args) => {
   return lengkapiDestinasi(item);
 };
 
-resolver.createDestination = async (args) => {
+resolver.createDestination = async (args, context) => {
+  wajibLogin(context.pengguna);
   const item = await buatDestinasi(args);
   return lengkapiDestinasi(item);
 };
@@ -466,22 +467,26 @@ resolver.deleteDestination = async (args) => {
 
 // Kode 4.20 Handler untuk endpoint/graphql
 // ---------- graphql: handler ---------- 
-async function tanganiGraphQL(req, res) { 
-  if (req.method !== 'POST') { 
+async function tanganiGraphQL(req, res) {
+  if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
-    return kirimError(res, 405, 'Endpoint /graphql hanya menerima method POST'); 
+    return kirimError(res, 405, 'Endpoint /graphql hanya menerima method POST');
   }
 
+  const pengguna = bacaPengguna(req);
   const body = await bacaBody(req);
+
   if (body === null || typeof body.query !== 'string') {
-    return kirimError(res, 400, 'Body harus berupa JSON yang memiliki field query'); 
+    return kirimError(res, 400, 'Body harus berupa JSON yang memiliki field query');
   }
 
-  const hasil = await graphql({ 
-    schema: schema, 
-    source: body.query, 
-    rootValue: resolver
+  const hasil = await graphql({
+    schema: schema,
+    source: body.query,
+    rootValue: resolver,
+    contextValue: { pengguna: pengguna }
   });
+
   kirimJSON(res, 200, hasil);
 }
 
