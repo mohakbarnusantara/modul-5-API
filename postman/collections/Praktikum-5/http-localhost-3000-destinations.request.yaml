@@ -1,0 +1,6 @@
+$kind: http-request
+name: http://localhost:3000/destinations
+description: ""
+url: http://localhost:3000/destinations
+method: GET
+order: 1000

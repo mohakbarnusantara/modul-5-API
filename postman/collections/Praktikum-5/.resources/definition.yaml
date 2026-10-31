@@ -1,0 +1,8 @@
+$kind: collection
+variables:
+  - key: api_key
+    value: ""
+    disabled: false
+  - key: token_editor
+    secret: true
+    disabled: false

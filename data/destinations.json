@@ -2,31 +2,67 @@
   {
     "id": 1,
     "name": "Danau Poso",
-    "region": "Poso",
-    "category": "danau"
+    "category": "danau",
+    "regionId": 2
   },
   {
     "id": 2,
     "name": "Pantai Tanjung Karang",
-    "region": "Donggala",
-    "category": "pantai"
+    "category": "pantai",
+    "regionId": 3
   },
   {
     "id": 3,
     "name": "Kepulauan Togean",
-    "region": "Tojo Una-Una",
-    "category": "bahari"
+    "category": "bahari",
+    "regionId": 4
   },
   {
     "id": 4,
     "name": "Taman Nasional Lore Lindu",
-    "region": "Sigi",
-    "category": "alam"
+    "category": "alam",
+    "regionId": 5
   },
   {
     "id": 5,
     "name": "Pantai Talise",
-    "region": "Palu",
-    "category": "pantai"
+    "category": "pantai",
+    "regionId": 1
+  },
+  {
+    "id": 7,
+    "name": "Air Terjun Wera",
+    "category": "alam",
+    "regionId": 5
+  },
+  {
+    "id": 8,
+    "name": "Air Terjun Wera",
+    "category": "alam",
+    "regionId": 5
+  },
+  {
+    "id": 9,
+    "name": "Air Terjun Wera",
+    "category": "alam",
+    "regionId": 5
+  },
+  {
+    "id": 10,
+    "name": "Air Terjun Wera",
+    "category": "alam",
+    "regionId": 5
+  },
+  {
+    "id": 11,
+    "name": "Air Terjun Wera",
+    "category": "alam",
+    "regionId": 5
+  },
+  {
+    "id": 12,
+    "name": "Air Terjun Wera",
+    "category": "alam",
+    "regionId": 5
   }
 ]
