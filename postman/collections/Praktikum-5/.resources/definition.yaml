@@ -9,9 +9,9 @@ variables:
   - key: token_admin
     secret: true
     disabled: false
-  - key: json_web_token_0wgj
-    secret: true
+  - key: local_url
+    value: ""
     disabled: false
   - key: token_viewer
-    value: ""
+    secret: true
     disabled: false

@@ -1,0 +1,9 @@
+$kind: graphql-request
+url: "{{url}}/graphql"
+query: |+
+  
+variables: ""
+settings: {}
+auth:
+  type: bearer
+order: 23000

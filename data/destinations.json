@@ -28,5 +28,59 @@
     "name": "Pantai Talise",
     "category": "pantai",
     "regionId": 1
+  },
+  {
+    "id": 6,
+    "name": "Danau Poso",
+    "category": "alam",
+    "regionId": 1
+  },
+  {
+    "id": 7,
+    "name": "Danau Poso",
+    "category": "alam",
+    "regionId": 1
+  },
+  {
+    "id": 8,
+    "name": "Danau Poso",
+    "category": "alam",
+    "regionId": 1
+  },
+  {
+    "id": 9,
+    "name": "Danau Poso",
+    "category": "alam",
+    "regionId": 1
+  },
+  {
+    "id": 10,
+    "name": "Pulau Kadidiri",
+    "category": "bahari",
+    "regionId": 4
+  },
+  {
+    "id": 11,
+    "name": "Danau Poso",
+    "category": "alam",
+    "regionId": 1
+  },
+  {
+    "id": 12,
+    "name": "Danau Poso",
+    "category": "alam",
+    "regionId": 1
+  },
+  {
+    "id": 13,
+    "name": "Danau Poso",
+    "category": "alam",
+    "regionId": 1
+  },
+  {
+    "id": 14,
+    "name": "Danau Poso",
+    "category": "alam",
+    "regionId": 1
   }
 ]

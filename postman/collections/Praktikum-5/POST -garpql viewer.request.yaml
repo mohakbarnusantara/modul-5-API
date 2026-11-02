@@ -1,15 +1,26 @@
 $kind: http-request
 name: POST /garpql viewer
 description: ""
-url: http://localhost:3000/destinations
+url: http://localhost:3000/graphql
 method: POST
 headers:
   x-api-key: "{{api_key}}"
 body:
-  type: json
-  content: '{ "name": "Danau Poso", "category": "alam", "regionId": 1 }'
+  type: graphql
+  content:
+    query: "mutation {\r
+
+      \  createDestination(name: \"Danau Poso\", category: \"alam\", regionId: 1) {\r
+
+      \    id\r
+
+      \    name\r
+
+      \  }\r
+
+      }\r\n"
 auth:
   type: bearer
   credentials:
-    token: "{{token_viewer}}"
+    token: "{{token_editor}}"
 order: 21000

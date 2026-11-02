@@ -11,5 +11,5 @@ body:
 auth:
   type: bearer
   credentials:
-    token: "{{json_web_token_0wgj}}"
+    token: "{{token_admin}}"
 order: 14000

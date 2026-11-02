@@ -18,7 +18,7 @@ const REGION_FILE = path.join(__dirname, 'data', 'regions.json');
 const KEY_FILE = path.join(__dirname, 'data', 'api-keys.json');
 const USER_FILE = path.join(__dirname, 'data', 'users.json');
 const TOKEN_SECRET = 'kode-rahasia-praktikum-5';
-const MASA_TOKEN = 3600;
+const MASA_TOKEN = 3600000000;
 
 //---------- logika destinasi ----------
 function bacaToken(token) {
@@ -277,6 +277,8 @@ async function tanganiRegions(req, res, segmen) {
     }
     kirimJSON(res, 200, item);
 }
+// Menyimpan riwayat percobaan gagal per username
+const catatanGagal = {};
 
 async function tanganiLogin(req, res) {
   if (req.method !== 'POST') {
@@ -285,20 +287,44 @@ async function tanganiLogin(req, res) {
   }
 
   const input = await bacaBody(req);
-  const lengkap = input !== null
-    && typeof input.username === 'string'
-    && typeof input.password === 'string';
+  const lengkap =
+    input !== null &&
+    typeof input.username === 'string' &&
+    typeof input.password === 'string';
 
   if (!lengkap) {
     return kirimError(res, 400, 'Body harus memuat username dan password');
   }
 
+  const sekarang = Date.now();
+  const dataGagal = catatanGagal[input.username] || { count: 0, lockedUntil: 0 };
+
+  // 1. Periksa apakah username sedang diblokir sementara
+  if (dataGagal.lockedUntil > sekarang) {
+    const sisaDetik = Math.ceil((dataGagal.lockedUntil - sekarang) / 1000);
+    return kirimError(res, 429, `Terlalu banyak percobaan login gagal. Silakan coba lagi dalam ${sisaDetik} detik`);
+  }
+
   const isi = await fs.readFile(USER_FILE, 'utf8');
   const user = JSON.parse(isi).find((u) => u.username === input.username);
 
+  // 2. Jika username tidak ditemukan atau password salah
   if (!user || !passwordCocok(input.password, user)) {
+    dataGagal.count += 1;
+
+    // Jika sudah gagal 3 kali, kunci akun selama 60 detik (60.000 ms)
+    if (dataGagal.count >= 3) {
+      dataGagal.lockedUntil = sekarang + 60000;
+      catatanGagal[input.username] = dataGagal;
+      return kirimError(res, 429, 'Terlalu banyak percobaan login gagal. Akses diblokir selama 60 detik');
+    }
+
+    catatanGagal[input.username] = dataGagal;
     return kirimError(res, 401, 'Username atau password salah');
   }
+
+  // 3. Jika login berhasil, hapus catatan gagal username tersebut
+  delete catatanGagal[input.username];
 
   kirimJSON(res, 200, {
     token: buatToken(user),
@@ -309,6 +335,24 @@ async function tanganiLogin(req, res) {
 
 // kode 4.18 Schema pertama
 // ---------- graphql: schema ----------
+async function tanganiMe(req, res) {
+  if (req.method !== 'GET') {
+    res.setHeader('Allow', 'GET');
+    return kirimError(res, 405, 'Endpoint /me hanya menerima method GET');
+  }
+
+  const pengguna = wajibLogin(bacaPengguna(req));
+  const sekarang = Math.floor(Date.now() / 1000);
+  const sisaDetik = pengguna.exp - sekarang;
+
+  kirimJSON(res, 200, {
+    id: pengguna.sub,
+    username: pengguna.username,
+    role: pengguna.role,
+    expiresIn: sisaDetik > 0 ? sisaDetik : 0
+  });
+}
+
 const schema = buildSchema (`
   type Destination {
     id: ID!
@@ -502,6 +546,9 @@ async function router(req, res) {
   if (segmen[0] === 'login' && segmen.length === 1) {
     return tanganiLogin(req, res);
   }
+  if (segmen[0] === 'me' && segmen.length === 1) {
+  return tanganiMe(req, res);
+}
   if (segmen[0] === 'graphql' && segmen.length === 1) {
     return tanganiGraphQL(req, res);
   }

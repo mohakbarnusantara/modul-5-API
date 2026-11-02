@@ -1,0 +1,15 @@
+$kind: http-request
+name: http://localhost:3000/me
+description: ""
+url: http://localhost:3000/me
+method: GET
+headers:
+  x-api-key: "{{api_key}}"
+body:
+  type: json
+  content: ""
+auth:
+  type: bearer
+  credentials:
+    token: "{{token_editor}}"
+order: 25000

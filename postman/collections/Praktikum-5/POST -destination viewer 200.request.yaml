@@ -1,0 +1,15 @@
+$kind: http-request
+name: POST /destination viewer 200
+description: ""
+url: http://localhost:3000/destinations
+method: POST
+headers:
+  x-api-key: "{{api_key}}"
+body:
+  type: json
+  content: '{ "name": "Danau Poso", "category": "alam", "regionId": 1 }'
+auth:
+  type: bearer
+  credentials:
+    token: "{{token_editor}}"
+order: 22000

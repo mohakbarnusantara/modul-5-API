@@ -9,5 +9,5 @@ queryParams:
   "": ""
 body:
   type: json
-  content: '{ "username": "admin", "password": "tadulako2026" }'
+  content: '{ "username": "viewer_user", "password": "pass123" }'
 order: 19000
