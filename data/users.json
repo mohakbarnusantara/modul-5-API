@@ -26,5 +26,12 @@
     "role": "editor",
     "salt": "1c06487c7c494bb5069f0dfcf31ec486",
     "passwordHash": "e0ae594f2b71298b7ff14995d0092fe04efa6bdf6bac045afc5cdc515d9ceb50"
+  },
+  {
+    "id": 5,
+    "username": "viewer_user",
+    "role": "viewer",
+    "salt": "c2c2359264728cfeb1a3aa9bf5d58a65",
+    "passwordHash": "8613735a1f0e130926608ca2a746f73b682b0d8418fc1d4302cf0e66932a455d"
   }
 ]

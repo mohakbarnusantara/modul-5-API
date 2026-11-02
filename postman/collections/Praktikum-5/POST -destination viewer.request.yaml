@@ -1,0 +1,21 @@
+$kind: http-request
+name: POST /destination viewer
+description: ""
+url: http://localhost:3000/destinations
+method: POST
+headers:
+  x-api-key: "{{api_key}}"
+body:
+  type: json
+  content: "{\r
+
+    \  \"username\": \"viewer_user\",\r
+
+    \  \"password\": \"pass123\"\r
+
+    }"
+auth:
+  type: bearer
+  credentials:
+    token: "{{token_viewer}}"
+order: 20000

@@ -12,3 +12,6 @@ variables:
   - key: json_web_token_0wgj
     secret: true
     disabled: false
+  - key: token_viewer
+    value: ""
+    disabled: false

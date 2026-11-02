@@ -434,7 +434,7 @@ resolver.destination = async (args) => {
 };
 
 resolver.createDestination = async (args, context) => {
-  wajibLogin(context.pengguna);
+  wajibRole(context.pengguna, ['admin', 'editor']);
   const item = await buatDestinasi(args);
   return lengkapiDestinasi(item);
 };
@@ -516,9 +516,9 @@ async function router(req, res) {
   if (segmen.length === 1) {
     if (req.method === 'GET') return daftarDestinasi(req, res, url);
     if (req.method === 'POST') {
-      wajibLogin(bacaPengguna(req));
+      wajibRole(bacaPengguna(req), ['admin', 'editor']);
       return tambahDestinasi(req, res);
-    }
+}
     res.setHeader('Allow', 'GET, POST');
     return kirimError(res, 405, `Method ${req.method} tidak didukung pada endpoint ini`);
   }
@@ -531,9 +531,9 @@ async function router(req, res) {
 
   if (req.method === 'GET') return detailDestinasi(req, res, id);
   if (req.method === 'PUT') {
-    wajibLogin(bacaPengguna(req));
+    wajibRole(bacaPengguna(req), ['admin', 'editor']);
     return ubahDestinasi(req, res, id);
-  }
+    }
 if (req.method === 'DELETE') {
   wajibRole(bacaPengguna(req), ['admin']);
   return hapusDestinasi(req, res, id);
